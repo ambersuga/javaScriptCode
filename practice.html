@@ -1,0 +1,106 @@
+<html>
+
+<body>
+    <button id="todo-button" onclick="change()">press</button>
+    <div id="counter">0</div>
+    <button  onclick="countup()">up</button><br>
+    <button onclick="countdown()">down</button>
+    <input type="text" id="text-box"/>
+    <button  onclick="print()">add</button><br>
+
+    
+    <button onclick="addToCart('Apple')">Apple</button>
+    <button onclick="addToCart('Tomato')">Tomato</button>
+    <button onclick="addToCart('Eggs')">Eggs</button>
+    <button onclick="clearCart()">Clear</button>
+    <div id="cart"></div>
+
+
+
+    <script>
+        const cart = document.getElementById("cart");
+        function addToCart(food){
+            cartItem=document.createElement("div");
+            cartItem.innerText=food;
+            cart.appendChild(cartItem);
+            
+        }
+        function clearCart(){
+            cart.innerHTML='';
+        }
+        
+        function change(){
+            let x = document.getElementById('todo-button');
+        x.innerText = "done";
+        }
+        
+        let count=0;
+        function countup(){
+            count = count+1;
+            let z = document.getElementById("counter");
+            z.innerText=count;
+        }
+        function countdown(){
+            count=count-1;
+           let counter=document.getElementById("counter");
+            counter.innerText=count;
+        }
+        function print(){
+            let a=document.getElementById("text-box");
+            let matter=a.value;
+            let div=document.createElement("div");
+            div.innerText=matter;
+            document.body.appendChild(div);
+        }
+
+let element = document.createElement("button");
+        element.innerText = ("Click Me");
+        document.body.appendChild(element);
+function greeting(firstName){
+    console.log("hello "+firstName);
+}
+
+greeting("amber");
+
+let name=["hello", "amber", "world"];
+name.forEach (function (str){
+    console.log(str.toUpperCase());
+});
+
+let sound=["bark", "meow"];
+
+function arrayDouble(sound){
+    let result=[];
+    sound.forEach (function (str){
+        result.push(str);
+        result.push(str);
+    });
+
+    console.log(result)
+}
+arrayDouble(sound);
+
+
+
+function converter(length){
+    length=length*(2.54);
+    console.log(length+" cms")
+}
+
+converter(5);
+
+let numbers=[1,3,4,7,9,-2];
+function arraySum(numbers){
+    let total = 0;
+    numbers.forEach(function (num){
+        total=total+num;
+    });
+    console.log(total);
+}
+
+arraySum(numbers);
+arraySum([3,4,4,4,4]);
+
+</script>
+</body>
+</html>

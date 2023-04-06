@@ -1,0 +1,201 @@
+<html>
+<body>
+<input type="text" id="text-box"/>
+<button onclick="convertToCm()">Convert to cm</button>
+<button onclick="convertToInch()">Convert to inch</button>
+<div id="result"></div>
+<div id="receipt"></div>
+
+<script>
+const number=document.getElementById("text-box");
+let result=document.getElementById("result");
+
+
+function convertToCm(){
+    const value = number.value;
+   const  Cvalue = +value * 2.54;
+    result.innerText=Cvalue;
+    document.body.appendChild(result);
+}
+
+function convertToInch(){
+    const value = number.value;
+   const Cvalue= +value/2.54;
+    result.innerText=Cvalue;
+    document.body.appendChild(result);
+}
+
+
+function cartTotal(cartArray){
+    let total=0;
+    cartArray.forEach(function (cart){
+        const value = cart.price*cart.quantity;
+        total=total+value;
+
+    });
+console.log(total);
+}
+
+cartTotal([
+{
+        name:'Apple',
+        price:9,
+        quantity:2
+    },
+    {
+        name:'Orange',
+        price:3,
+        quantity:3
+    }
+]);
+ 
+const receipt = document.getElementById("receipt");
+function displayReceipt(cartArray){
+    receipt.innerHTML='';
+
+    cartArray.forEach(function (item){
+
+    });
+
+}
+let total=0;
+function createCart(foodPrices){
+ const foods = Object.keys(foodPrices);
+ 
+ foods.forEach(function (food){
+    const cartItem = document.createElement('div');
+    const foodPrice = foodPrices[food];
+    cartItem.innerText = food+' $'+foodPrice;
+    
+
+    const addButton = document.createElement('button');
+    addButton.innerText = 'Add';
+
+    addButton.onclick = function(){
+        total = total+foodPrice;
+    };
+    
+    cartItem.appendChild(addButton);
+    document.body.appendChild(cartItem);
+ });
+}
+createCart({ Apple: 3, Orange: 4, Egg: 2 });
+
+
+function strconvert(str){
+    str=str.toUpperCase();
+    return str;
+}
+
+function aboveFreezing(temps){
+    
+    const tempsabovefreezing = temps.filter(function (temp){
+        return temp>32;
+    });
+    return tempsabovefreezing;
+}
+
+function removeRed(foodArray){
+    const nored = foodArray.filter(function(food){
+        return food.color!=='red';
+
+    });
+    return nored;
+    }
+function max(maxArray){
+    let max=0;;
+    maxArray = maxArray.filter(function (num){
+        if (max < num){
+            max=num;
+            return false;
+        }
+        else {
+            return true;
+        }
+    });
+    return max;
+}
+function min(minArray){
+    let min=0;
+    minArray.forEach(function (num){
+        if (num < min){
+            min=num;
+        }
+    });
+    return min;
+}
+function smallest(numArray){
+    let smallest = Infinity;
+    numArray.forEach(function (num){
+        if (num<0){
+            return false;
+        }
+        
+        else if(num<smallest){
+            smallest=num;
+        }
+    });
+    return smallest;
+}
+function pickApples(fruitArray){
+    let applesPicked = 0;
+    const filteredArray = fruitArray.filter(function (fruit){
+        if (applesPicked >=2){
+            return true;
+        }
+        else if (fruit === 'apple'){
+            applesPicked = applesPicked+1;
+            return false;
+        }
+        else{
+            return true;
+        }
+    });
+    return filteredArray;
+}
+function pickLastApples(fruitArray){
+    let applesPicked = 0;
+    reverseArray = fruitArray.reverse();
+    const filteredArray = reverseArray.filter(function (fruit){
+        if (applesPicked >=2){
+            return true;
+        }
+        else if (fruit === 'apple'){
+            applesPicked = applesPicked+1;
+            return false;
+        }
+        else{
+            return true;
+        }
+    });
+    return filteredArray.reverse();
+}
+function pickFruits(fruitArray){
+   let applesPicked = 0;
+   let orangesPicked = 0;
+   const filteredArray = fruitArray.filter(function (fruit){
+    if (applesPicked >=2 ){
+        return true;
+    }
+    else if(fruit ==='apple'){
+        applesPicked=applesPicked+1;
+        return false;
+    }
+    else if(orangesPicked>=1){
+        return true;
+    }
+    else if(fruit ==='orange'){
+        orangesPicked=orangesPicked+1;
+        return false;
+    }
+    else{
+        return true;
+    }
+   });
+   return filteredArray;
+}
+</script>
+</body>
+
+
+</html>
